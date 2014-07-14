@@ -161,7 +161,7 @@ static BOOL FBIsDeviceIPad() {
         self.transform = CGAffineTransformIdentity;
     }
 
-    CGRect frame = [UIScreen mainScreen].applicationFrame;
+    CGRect frame = [UIScreen mainScreen].bounds;
     CGPoint center = CGPointMake(
                                  frame.origin.x + ceil(frame.size.width/2),
                                  frame.origin.y + ceil(frame.size.height/2));
@@ -404,7 +404,7 @@ static BOOL FBIsDeviceIPad() {
 // Display the dialog's WebView with a slick pop-up animation
 - (void)showWebView {
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    if (window.windowLevel != UIWindowLevelNormal) {
+    if (window == nil) {
         for(window in [UIApplication sharedApplication].windows) {
             if (window.windowLevel == UIWindowLevelNormal)
                 break;
